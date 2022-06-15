@@ -9,7 +9,7 @@ class Clientes{
 const cliente = [
     new Clientes ("Carlos Perez", 40, "español"),
     new Clientes ("Mariela Thompson", 52, "venezolana"),
-    new Clientes ("Miguel Losa", 18,  "ruguayo")
+    new Clientes ("Miguel Losa", 18,  "uruguayo")
 ]
 
 function agregarUsuario () {
@@ -25,6 +25,14 @@ agregarUsuario()
 
 console.log(cliente);
 
+
+const filtro = cliente.filter ((el) => el.edad < 30)
+
+console.log(filtro)
+
+const buscar = cliente.find ((nac) => nac.nacionalidad === "español")
+
+console.log(buscar)
 
 function nombre() {
     let nombreUsuario = prompt("Ingrese su nombre de usuario")
