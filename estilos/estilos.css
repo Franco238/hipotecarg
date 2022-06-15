@@ -15,10 +15,15 @@
     margin: 20px;
 }
 
-.card img {
+.fotoCard {
     height: 400px;
 }
 
 footer{
     border: 1px solid black;
+}
+
+
+.tarjetaHipo{
+    height: 800px;
 }
