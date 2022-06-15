@@ -1,0 +1,24 @@
+*{
+    text-align: center;
+}
+
+.fotoCar{
+    height: 600px;
+    width: 100%;
+}
+
+.tarjetas{
+    margin: 50px 0px;
+}
+
+.card{
+    margin: 20px;
+}
+
+.card img {
+    height: 400px;
+}
+
+footer{
+    border: 1px solid black;
+}
