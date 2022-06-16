@@ -27,3 +27,27 @@ footer{
 .tarjetaHipo{
     height: 800px;
 }
+
+.fotosRedes{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.fotoRed{
+    width: 80%;
+}
+
+.botonFooter{
+    width: 20%;
+    border-radius: 10px;
+    color: black;
+    background-color: rgb(27, 65, 168);
+    box-shadow: -2px 2px rgb(55, 51, 51);
+}
+
+footer p{
+    font-size: 20px;
+    font-weight: bold;
+}
