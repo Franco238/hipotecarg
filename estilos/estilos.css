@@ -51,3 +51,16 @@ footer p{
     font-size: 20px;
     font-weight: bold;
 }
+
+.colorFuente{
+    color: rgb(61, 151, 224);;
+}
+
+.tituloDom{
+    font-size: 24px;
+    
+}
+
+.subDom{
+    font-size: 18px;
+}

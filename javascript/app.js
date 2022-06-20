@@ -112,3 +112,18 @@ alert("Usted puede acceder a un prestamo de U$S" + valor * prestamo + " y el val
 // departemento.push(new departemento("recoleta", 0.24));
 // departemento.push(new departemento("palermo", 0.20));
 
+/* dom */
+
+let info = document.getElementById("infoHipotecarg")
+info.innerHTML = "<h3>Quienes somos</h3><p>Somos una empresa encargada de unir inversores que busquen una buena rentabilidad en USD con clientes que busquen financiamiento para cualquier proyecto con las tasas mas bajas del mercado.</p>" 
+
+let mision = document.getElementById("misionHipotecarg")
+mision.innerHTML = "<h3>Mision</h3><p>Nuestro objetivo principal es ser una organizacion que colabora con los sueños de las parejas jovenes, sus primeras viviendas, remodelar o expandir la suya, invertir en su negocio y cualquiera con un gran Proyecto.</p>"
+
+let bienvenida = document.getElementById("bienvenida")
+
+let apodo= prompt("Como le gusta que lo llamen?")
+
+
+bienvenida.innerHTML = "<h1>Bienvenido!</h1> <p>Bienvenido " + apodo + " a Hipotecarg! Lo asistiremos a lo largo de todo el proceso para conseguir su prestamo con garantia hipotecaria!</p>"
+
