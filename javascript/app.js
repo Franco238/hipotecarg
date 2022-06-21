@@ -39,6 +39,12 @@ function nombre() {
 
     alert("Bienvenido " + nombreUsuario)
 
+    let bienvenida = document.getElementById("bienvenida")
+
+
+    bienvenida.innerHTML = "<h1>Bienvenido!</h1> <p>Bienvenido " + nombreUsuario + " a Hipotecarg! Lo asistiremos a lo largo de todo el proceso para conseguir su prestamo con garantia hipotecaria!</p>"
+
+
 }
 
 nombre();
@@ -119,11 +125,3 @@ info.innerHTML = "<h3>Quienes somos</h3><p>Somos una empresa encargada de unir i
 
 let mision = document.getElementById("misionHipotecarg")
 mision.innerHTML = "<h3>Mision</h3><p>Nuestro objetivo principal es ser una organizacion que colabora con los sueños de las parejas jovenes, sus primeras viviendas, remodelar o expandir la suya, invertir en su negocio y cualquiera con un gran Proyecto.</p>"
-
-let bienvenida = document.getElementById("bienvenida")
-
-let apodo= prompt("Como le gusta que lo llamen?")
-
-
-bienvenida.innerHTML = "<h1>Bienvenido!</h1> <p>Bienvenido " + apodo + " a Hipotecarg! Lo asistiremos a lo largo de todo el proceso para conseguir su prestamo con garantia hipotecaria!</p>"
-
