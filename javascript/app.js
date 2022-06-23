@@ -191,9 +191,13 @@ formulario.addEventListener("submit", (event) => {
     event.preventDefault
 
         console.log("Informacion formulario")
-        console.log(campoNombre.value)
-        console.log(campoLocalidad.value)
-        console.log(campoEmail.value)
-        console.log(campoWhatsapp.value)
-    
+        
+        const infoUsuario = {
+            nombre: campoNombre.value,
+            localidad: campoLocalidad.value,
+            email: campoEmail.value,
+            whatsapp: campoWhatsapp.value
+        }
+        
+        console.log(infoUsuario)
 })
