@@ -43,7 +43,7 @@ footer{
     width: 20%;
     border-radius: 10px;
     color: black;
-    background-color: rgb(27, 65, 168);
+    background-color:  rgb(61, 151, 224);
     box-shadow: -2px 2px rgb(55, 51, 51);
 }
 
@@ -53,7 +53,7 @@ footer p{
 }
 
 .colorFuente{
-    color: rgb(61, 151, 224);;
+    color: rgb(61, 151, 224);
 }
 
 .tituloDom{
@@ -63,4 +63,27 @@ footer p{
 
 .subDom{
     font-size: 18px;
+}
+
+.formulario{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.campoFormulario{
+    width: 70%;
+    margin: 10px;
+    background-color: rgb(61, 151, 224);
+    border: 2px solid black;   
+}
+
+.campoFormulario::placeholder {
+    color: white;
+}
+
+.botonEnviar{
+    width: 20%;
+    margin: 20px;
 }

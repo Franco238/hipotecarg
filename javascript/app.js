@@ -125,3 +125,75 @@ info.innerHTML = "<h3>Quienes somos</h3><p>Somos una empresa encargada de unir i
 
 let mision = document.getElementById("misionHipotecarg")
 mision.innerHTML = "<h3>Mision</h3><p>Nuestro objetivo principal es ser una organizacion que colabora con los sueños de las parejas jovenes, sus primeras viviendas, remodelar o expandir la suya, invertir en su negocio y cualquiera con un gran Proyecto.</p>"
+
+
+//Events
+
+const formulario = document.querySelector("#my-form")
+const campoNombre = document.querySelector("#campoNombre")
+const campoLocalidad = document.querySelector("#campoLocalidad")
+const campoEmail = document.querySelector("#campoEmail")
+const campoWhatsapp = document.querySelector("#campoWhatsapp")
+
+
+
+campoNombre.addEventListener("input", () => {
+    console.log(campoNombre.value)
+
+    if(campoNombre.value.length < 3){
+        campoNombre.classList.add("border-danger")
+        campoNombre.classList.remove("border-success")
+    }
+    else{
+        campoNombre.classList.remove("border-danger")
+        campoNombre.classList.add("border-success")
+    }
+})
+
+campoLocalidad.addEventListener("input", () => {
+    conole.log(campoLocalidad.value)
+    if(campoLocalidad.value.length < 5){
+        campoLocalidad.classList.add("border-danger")
+    campoLocalidad.classList.remove("border-success")
+    }    else{
+        campoLocalidad.classList.remove("border-danger")
+    campoLocalidad.classList.add("border-success")
+    }
+})
+
+campoEmail.addEventListener("input", () => {
+    console.log(campoEmail.value)
+
+    if(campoEmail.value.length < 10){
+        campoEmail.classList.add("border-danger")
+        campoEmail.classList.remove("border-success")
+    }
+    else{
+        campoEmail.classList.remove("border-danger")
+        campoEmail.classList.add("border-success")
+    }
+})
+
+campoWhatsapp.addEventListener("input", () => {
+    console.log(campoWhatsapp.value)
+
+    if(campoWhatsapp.value.length < 9){
+        campoWhatsapp.classList.add("border-danger")
+        campoWhatsapp.classList.remove("border-success")
+    }
+    else{
+        campoWhatsapp.classList.remove("border-danger")
+        campoWhatsapp.classList.add("border-success")
+    }
+})
+
+formulario.addEventListener("submit", (event) => {
+    event.preventDefault
+
+        console.log("Informacion formulario")
+        console.log(campoNombre.value)
+        console.log(campoLocalidad.value)
+        console.log(campoEmail.value)
+        console.log(campoWhatsapp.value)
+    
+})
