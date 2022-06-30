@@ -1,38 +1,38 @@
-class Clientes{
-    constructor(nombre, edad, nacionalidad){
-        this.nombre = nombre
-        this.edad = edad
-        this.nacionalidad = nacionalidad
-    }
-}
+// class Clientes{
+//     constructor(nombre, edad, nacionalidad){
+//         this.nombre = nombre
+//         this.edad = edad
+//         this.nacionalidad = nacionalidad
+//     }
+// }
 
-const cliente = [
-    new Clientes ("Carlos Perez", 40, "español"),
-    new Clientes ("Mariela Thompson", 52, "venezolana"),
-    new Clientes ("Miguel Losa", 18,  "uruguayo")
-]
+// const cliente = [
+//     new Clientes ("Carlos Perez", 40, "español"),
+//     new Clientes ("Mariela Thompson", 52, "venezolana"),
+//     new Clientes ("Miguel Losa", 18,  "uruguayo")
+// ]
 
-function agregarUsuario () {
-    let nombre = prompt("Ingrese su nombre completo")
-    let edad = Number (prompt("Ingrese su edad"))
-    let nacionalidad = prompt("Ingrese su nacionalidad")
+// function agregarUsuario () {
+//     let nombre = prompt("Ingrese su nombre completo")
+//     let edad = Number (prompt("Ingrese su edad"))
+//     let nacionalidad = prompt("Ingrese su nacionalidad")
 
-    cliente.push(new Clientes(nombre, edad, nacionalidad))
+//     cliente.push(new Clientes(nombre, edad, nacionalidad))
 
-}
+// }
 
-agregarUsuario()
+// agregarUsuario()
 
-console.log(cliente);
+// console.log(cliente);
 
 
-const filtro = cliente.filter ((el) => el.edad < 30)
+// const filtro = cliente.filter ((el) => el.edad < 30)
 
-console.log(filtro)
+// console.log(filtro)
 
-const buscar = cliente.find ((nac) => nac.nacionalidad === "español")
+// const buscar = cliente.find ((nac) => nac.nacionalidad === "español")
 
-console.log(buscar)
+// console.log(buscar)
 
 function nombre() {
     let nombreUsuario = prompt("Ingrese su nombre de usuario")
@@ -56,7 +56,6 @@ while (contraseña !== "password") {
 
     contraseña = prompt("Ingrese su contraseña")
 }
-
 
 
 let inmueble = prompt("Su inmueble se ubica en CABA?")
@@ -105,7 +104,7 @@ switch (localidad.toLowerCase()) {
 // alert("Usted puede acceder a un prestamo de U$S" + valor * prestamo + " y el valor de sus cuotas sera de u$d" + valor * prestamo * (Math.round(Math.pow(1.01, cuotas))))
 
 let prestamoPer = document.getElementById("prestamoPer")
-prestamoPer.innerHTML = "<h3>Acerca de su prestamo personalizado</h3><p>Gracias a su inmueble ubicado en " + localidad +", usted puede acceder a un prestamo de U$S" + valor * prestamo + " y el valor de sus cuotas sera de u$d " + valor * prestamo * (Math.round(Math.pow(1.01, cuotas)))
+prestamoPer.innerHTML = "<h3>Acerca de su prestamo personalizado</h3><p>Gracias a su inmueble ubicado en " + localidad +", usted puede acceder a un prestamo de U$S" + valor * prestamo + " y el valor de sus cuotas sera de u$d " + (valor/cuotas)
 // class Barrios 
 //     constructor(ubicacion, porcentaje){
 //         this.ubicacion = ubicacion;
@@ -202,4 +201,13 @@ formulario.addEventListener("submit", (event) => {
         }
         
         console.log(infoUsuario)
+
+
 })
+
+
+//JSON
+
+const barriosPrestamos = localStorage.getItem("barrios prestamos")
+
+console.log(barriosPrestamos)
