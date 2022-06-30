@@ -38,7 +38,7 @@
         </div>
       </div>
 
-      <div class="card bg-dark text-white">
+      <div class="card bg-dark text-white anchoTarjeta">
         <img src="multimedia/hipoteacrg.jpg" class="tarjetaHipo" alt="...">
         <div class="card-img-overlay">
           <h5 class="card-title">Hipotecarg</h5>
@@ -83,10 +83,11 @@
 
     </section>
 
-    <div class="formulario">
-      <h3>Formulario de contacto</h3>
+    <div class="forMap row">
+      
+      <form id="my-form" class="col-6 formulario">
+        <h3>Formulario de contacto</h3>
       <h5>Realiza tu cotizacion sin costo!</h5>
-      <form id="my-form">
       <input class="form-control campoFormulario" type="text" id="campoNombre" placeholder="Ingrese su nombre">
       <input class="form-control campoFormulario" type="text" id="campoLocalidad" placeholder="Ingrese su localidad">
       <input class="form-control campoFormulario" type="email" id="campoEmail" placeholder="Ingrese su E-mail">
@@ -95,7 +96,9 @@
       <button id="botonEnviar" type="submit" class="btn btn-primary botonEnviar">Enviar</button>
 
     </form>
+    <iframe class="col-5 mapa" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3284.125080842561!2d-58.40618798505152!3d-34.600998480460134!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bcca925bb04107%3A0x20d6da597b25d3aa!2sViamonte%202660%2C%20C1056%20ABR%2C%20Buenos%20Aires!5e0!3m2!1ses!2sar!4v1656604316297!5m2!1ses!2sar" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
     </div>
+    
 
      <footer class="row">
 
@@ -124,6 +127,6 @@
 
     <script src="js/bootstrap.min.js"></script>
 
-    <script src="javascript/app.js"></script>
+    <!-- <script src="javascript/app.js"></script> -->
 </body>
 </html>

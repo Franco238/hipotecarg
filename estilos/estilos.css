@@ -65,6 +65,16 @@ footer p{
     font-size: 18px;
 }
 
+.anchoTarjeta{
+    width: 80%;
+    margin: auto;
+    margin-top: 30px;
+}
+
+.forMap{
+    margin: 30px;
+}
+
 .formulario{
     display: flex;
     flex-direction: column;
@@ -72,9 +82,11 @@ footer p{
     align-items: center;
 }
 
+
 .campoFormulario{
     width: 70%;
-    margin: 10px;
+    margin: auto;
+    margin-top: 20px;
     background-color: rgb(61, 151, 224);
     border: 2px solid black;   
 }
@@ -84,6 +96,8 @@ footer p{
 }
 
 .botonEnviar{
-    width: 20%;
-    margin: 20px;
+    width: 60%;
+    margin: auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
