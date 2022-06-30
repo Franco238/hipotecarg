@@ -1,7 +1,7 @@
 class Clientes{
     constructor(nombre, edad, nacionalidad){
         this.nombre = nombre
-        this. edad = edad
+        this.edad = edad
         this.nacionalidad = nacionalidad
     }
 }
@@ -14,7 +14,7 @@ const cliente = [
 
 function agregarUsuario () {
     let nombre = prompt("Ingrese su nombre completo")
-    let edad = Number(prompt("Ingrese su edad"))
+    let edad = Number (prompt("Ingrese su edad"))
     let nacionalidad = prompt("Ingrese su nacionalidad")
 
     cliente.push(new Clientes(nombre, edad, nacionalidad))
@@ -102,9 +102,11 @@ switch (localidad.toLowerCase()) {
         alert("Su propiedad no aplica para otorgarle un prestamo")
         break;
 }
-alert("Usted puede acceder a un prestamo de U$S" + valor * prestamo + " y el valor de sus cuotas sera de u$d" + valor * prestamo * (Math.pow(1.01, cuotas)))
+// alert("Usted puede acceder a un prestamo de U$S" + valor * prestamo + " y el valor de sus cuotas sera de u$d" + valor * prestamo * (Math.round(Math.pow(1.01, cuotas))))
 
-// class Barrios {
+let prestamoPer = document.getElementById("prestamoPer")
+prestamoPer.innerHTML = "<h3>Acerca de su prestamo personalizado</h3><p>Gracias a su inmueble ubicado en " + localidad +", usted puede acceder a un prestamo de U$S" + valor * prestamo + " y el valor de sus cuotas sera de u$d " + valor * prestamo * (Math.round(Math.pow(1.01, cuotas)))
+// class Barrios 
 //     constructor(ubicacion, porcentaje){
 //         this.ubicacion = ubicacion;
 //         this.porcentaje = porcentaje;
