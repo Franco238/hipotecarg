@@ -75,7 +75,7 @@ const cuotas = Number(prompt("Ingrese en cuantas cuotas desea abonar"))
 let prestamo
 
 
-switch (localidad.toLowerCase()) {
+switch (localidad) {
 
     case "palermo":
         prestamo = 0.2
