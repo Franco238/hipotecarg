@@ -1,38 +1,38 @@
-// class Clientes{
-//     constructor(nombre, edad, nacionalidad){
-//         this.nombre = nombre
-//         this.edad = edad
-//         this.nacionalidad = nacionalidad
-//     }
-// }
+class Clientes{
+    constructor(nombre, edad, nacionalidad){
+        this.nombre = nombre
+        this.edad = edad
+        this.nacionalidad = nacionalidad
+    }
+}
 
-// const cliente = [
-//     new Clientes ("Carlos Perez", 40, "español"),
-//     new Clientes ("Mariela Thompson", 52, "venezolana"),
-//     new Clientes ("Miguel Losa", 18,  "uruguayo")
-// ]
+const cliente = [
+    new Clientes ("Carlos Perez", 40, "español"),
+    new Clientes ("Mariela Thompson", 52, "venezolana"),
+    new Clientes ("Miguel Losa", 18,  "uruguayo")
+]
 
-// function agregarUsuario () {
-//     let nombre = prompt("Ingrese su nombre completo")
-//     let edad = Number (prompt("Ingrese su edad"))
-//     let nacionalidad = prompt("Ingrese su nacionalidad")
+function agregarUsuario () {
+    let nombre = prompt("Ingrese su nombre completo")
+    let edad = Number (prompt("Ingrese su edad"))
+    let nacionalidad = prompt("Ingrese su nacionalidad")
 
-//     cliente.push(new Clientes(nombre, edad, nacionalidad))
+    cliente.push(new Clientes(nombre, edad, nacionalidad))
 
-// }
+}
 
-// agregarUsuario()
+agregarUsuario()
 
-// console.log(cliente);
+console.log(cliente);
 
 
-// const filtro = cliente.filter ((el) => el.edad < 30)
+const filtro = cliente.filter ((el) => el.edad < 30)
 
-// console.log(filtro)
+console.log(filtro)
 
-// const buscar = cliente.find ((nac) => nac.nacionalidad === "español")
+const buscar = cliente.find ((nac) => nac.nacionalidad === "español")
 
-// console.log(buscar)
+console.log(buscar)
 
 function nombre() {
     let nombreUsuario = prompt("Ingrese su nombre de usuario")
@@ -134,7 +134,7 @@ const formulario = document.querySelector("#my-form")
 const campoNombre = document.querySelector("#campoNombre")
 const campoLocalidad = document.querySelector("#campoLocalidad")
 const campoEmail = document.querySelector("#campoEmail")
-const campoWhatsapp = document.querySelector("#campoWhatsapp")
+const campoNumero = document.querySelector("#campoNumero")
 
 
 
@@ -175,16 +175,16 @@ campoEmail.addEventListener("input", () => {
     }
 })
 
-campoWhatsapp.addEventListener("input", () => {
-    console.log(campoWhatsapp.value)
+campoNumero.addEventListener("input", () => {
+    console.log(campoNumero.value)
 
-    if(campoWhatsapp.value.length < 9){
-        campoWhatsapp.classList.add("border-danger")
-        campoWhatsapp.classList.remove("border-success")
+    if(campoNumero.value.length < 9){
+        campoNumero.classList.add("border-danger")
+        campoNumero.classList.remove("border-success")
     }
     else{
-        campoWhatsapp.classList.remove("border-danger")
-        campoWhatsapp.classList.add("border-success")
+        campoNumero.classList.remove("border-danger")
+        campoNumero.classList.add("border-success")
     }
 })
 
@@ -197,7 +197,7 @@ formulario.addEventListener("submit", (event) => {
             nombre: campoNombre.value,
             localidad: campoLocalidad.value,
             email: campoEmail.value,
-            whatsapp: campoWhatsapp.value
+            whatsapp: campoNumero.value
         }
         
         console.log(infoUsuario)
@@ -208,6 +208,6 @@ formulario.addEventListener("submit", (event) => {
 
 //JSON
 
-const barriosPrestamos = localStorage.getItem("barrios prestamos")
+const localidadesPrestamos = localStorage.getItem("localidades prestamos")
 
-console.log(barriosPrestamos)
+console.log(localidadesPrestamos)
