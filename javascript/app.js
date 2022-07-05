@@ -141,51 +141,27 @@ const campoNumero = document.querySelector("#campoNumero")
 campoNombre.addEventListener("input", () => {
     console.log(campoNombre.value)
 
-    if(campoNombre.value.length < 3){
-        campoNombre.classList.add("border-danger")
-        campoNombre.classList.remove("border-success")
-    }
-    else{
-        campoNombre.classList.remove("border-danger")
-        campoNombre.classList.add("border-success")
-    }
+    campoNombre.value.length < 3 ? campoNombre.classList.add("border-danger") && campoNombre.classList.remove("border-success") : campoNombre.classList.remove("border-danger") && campoNombre.classList.add("border-success")
+
 })
 
 campoLocalidad.addEventListener("input", () => {
     conole.log(campoLocalidad.value)
-    if(campoLocalidad.value.length < 5){
-        campoLocalidad.classList.add("border-danger")
-    campoLocalidad.classList.remove("border-success")
-    }    else{
-        campoLocalidad.classList.remove("border-danger")
-    campoLocalidad.classList.add("border-success")
-    }
+
+    campoLocalidad.value.length < 5 ? campoLocalidad.classList.add("border-danger") && campoLocalidad.classList.remove("border-success") : campoLocalidad.classList.remove("border-danger") && campoLocalidad.classList.add("border-success")
 })
 
 campoEmail.addEventListener("input", () => {
     console.log(campoEmail.value)
 
-    if(campoEmail.value.length < 10){
-        campoEmail.classList.add("border-danger")
-        campoEmail.classList.remove("border-success")
-    }
-    else{
-        campoEmail.classList.remove("border-danger")
-        campoEmail.classList.add("border-success")
-    }
+    campoEmail.value.length < 10 ? campoLocalidad.classList.add("border-danger") && campoLocalidad.classList.remove("border-success") : campoLocalidad.classList.remove("border-danger") && campoLocalidad.classList.add("border-success")
+
 })
 
 campoNumero.addEventListener("input", () => {
     console.log(campoNumero.value)
+    campoEmail.value.length < 10 ? campoLocalidad.classList.add("border-danger") && campoLocalidad.classList.remove("border-success") : campoLocalidad.classList.remove("border-danger") && campoLocalidad.classList.add("border-success")
 
-    if(campoNumero.value.length < 9){
-        campoNumero.classList.add("border-danger")
-        campoNumero.classList.remove("border-success")
-    }
-    else{
-        campoNumero.classList.remove("border-danger")
-        campoNumero.classList.add("border-success")
-    }
 })
 
 formulario.addEventListener("submit", (event) => {
@@ -205,9 +181,28 @@ formulario.addEventListener("submit", (event) => {
 
 })
 
+//Tarjeta por cada barrio que otorgan prestamos (DOM)
+const divBarrios = document.querySelector("#barriosAceptados")
+
+
+barriosPrestamos.forEach((barrioJS) => {
+const div = document.createElement('div')
+div.classList.add('estiloBarrios')
+div.innerHTML = 
+                    `
+                    <h2>"Barrios en los que trabajamos"</h2>
+                    <h3>${barrioJS.NOMBRE}</h3>
+                    <p>${barrioJS.descr}</p>
+                    ${ barrioJS.comision === false ? '<p>Sin comision inmobilaria!</p>' : "" } 
+                    `
+
+
+divBarrios.append(div)
+})
+
 
 //JSON
 
-const localidadesPrestamos = localStorage.getItem("localidades prestamos")
+const localidadesPrestamos = localStorage.getItem("barrios prestamos")
 
 console.log(localidadesPrestamos)
