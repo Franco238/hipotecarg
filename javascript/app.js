@@ -206,3 +206,28 @@ divBarrios.append(div)
 const localidadesPrestamos = localStorage.getItem("barrios prestamos")
 
 console.log(localidadesPrestamos)
+
+//Sweet Alert
+const btnSwall = document.querySelector("#botonEnviar")
+
+btnSwall.addEventListener('click', () => {
+    Swal.fire({
+    icon: 'success',
+    title: 'Su formulario ha sido enviado!',
+    showConfirmButton: false,
+    timer: 3000
+    })
+})
+
+//Toastify
+const btnToastify = document.querySelector("#botonNews")
+
+btnToastify.addEventListener("click", () => {
+
+Toastify({
+    text: "Se ha suscripto de forma exitosa!",
+    duration: 2500,
+    className: botonToast
+}).showToast()
+
+})

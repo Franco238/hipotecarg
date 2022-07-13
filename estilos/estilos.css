@@ -109,3 +109,9 @@ footer p{
 .selector::placeholder {
     color: white;
 }
+
+/* toastify */
+.botonToast{
+    background-color:  rgb(61, 151, 224);
+    color: white;
+}
