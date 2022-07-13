@@ -12,18 +12,18 @@ const cliente = [
     new Clientes ("Miguel Losa", 18,  "uruguayo")
 ]
 
-function agregarUsuario () {
-    let nombre = prompt("Ingrese su nombre completo")
-    let edad = Number (prompt("Ingrese su edad"))
-    let nacionalidad = prompt("Ingrese su nacionalidad")
+// function agregarUsuario () {
+//     let nombre = prompt("Ingrese su nombre completo")
+//     let edad = Number (prompt("Ingrese su edad"))
+//     let nacionalidad = prompt("Ingrese su nacionalidad")
 
-    cliente.push(new Clientes(nombre, edad, nacionalidad))
+//     cliente.push(new Clientes(nombre, edad, nacionalidad))
 
-}
+// }
 
-agregarUsuario()
+// agregarUsuario()
 
-console.log(cliente);
+// console.log(cliente);
 
 
 const filtro = cliente.filter ((el) => el.edad < 30)
@@ -34,77 +34,77 @@ const buscar = cliente.find ((nac) => nac.nacionalidad === "español")
 
 console.log(buscar)
 
-function nombre() {
-    let nombreUsuario = prompt("Ingrese su nombre de usuario")
+// function nombre() {
+//     let nombreUsuario = prompt("Ingrese su nombre de usuario")
 
-    alert("Bienvenido " + nombreUsuario)
+//     alert("Bienvenido " + nombreUsuario)
 
-    let bienvenida = document.getElementById("bienvenida")
-
-
-    bienvenida.innerHTML = "<h1>Bienvenido!</h1> <p>Bienvenido " + nombreUsuario + " a Hipotecarg! Lo asistiremos a lo largo de todo el proceso para conseguir su prestamo con garantia hipotecaria!</p>"
+//     let bienvenida = document.getElementById("bienvenida")
 
 
-}
-
-nombre();
-
-let contraseña = prompt("Ingrese su contraseña")
-
-while (contraseña !== "password") { 
-    alert("Su contraseña es incorrecta")
-
-    contraseña = prompt("Ingrese su contraseña")
-}
+//     bienvenida.innerHTML = "<h1>Bienvenido!</h1> <p>Bienvenido " + nombreUsuario + " a Hipotecarg! Lo asistiremos a lo largo de todo el proceso para conseguir su prestamo con garantia hipotecaria!</p>"
 
 
-let inmueble = prompt("Su inmueble se ubica en CABA?")
+// }
 
-while (inmueble !== "si") { 
-    alert("No podemos otorgarle una hipoteca")
+// nombre();
 
-    inmueble = prompt("Su inmueble se ubica en CABA?")
+// let contraseña = prompt("Ingrese su contraseña")
 
-}
+// while (contraseña !== "password") { 
+//     alert("Su contraseña es incorrecta")
 
-const localidad = prompt("Ingrese el barrio donde se encuentra su inmueble")
-
-const valor = Number(prompt("Ingrese el valor de su propiedad en dolares")) 
-const cuotas = Number(prompt("Ingrese en cuantas cuotas desea abonar"))
-
-let prestamo
+//     contraseña = prompt("Ingrese su contraseña")
+// }
 
 
-switch (localidad) {
+// let inmueble = prompt("Su inmueble se ubica en CABA?")
 
-    case "palermo":
-        prestamo = 0.2
-        break;
+// while (inmueble !== "si") { 
+//     alert("No podemos otorgarle una hipoteca")
 
-    case "recoleta":
-        prestamo = 0.24
-        break;
+//     inmueble = prompt("Su inmueble se ubica en CABA?")
 
-    case "belgrano":
-        prestamo = 0.30
-        break;
+// }
+
+// const localidad = prompt("Ingrese el barrio donde se encuentra su inmueble")
+
+// const valor = Number(prompt("Ingrese el valor de su propiedad en dolares")) 
+// const cuotas = Number(prompt("Ingrese en cuantas cuotas desea abonar"))
+
+// let prestamo
+
+
+// switch (localidad) {
+
+//     case "palermo":
+//         prestamo = 0.2
+//         break;
+
+//     case "recoleta":
+//         prestamo = 0.24
+//         break;
+
+//     case "belgrano":
+//         prestamo = 0.30
+//         break;
     
-    case "nuñez":
-        prestamo = 0.18
-        break;
+//     case "nuñez":
+//         prestamo = 0.18
+//         break;
 
-    case "microcentro":
-        prestamo = 0.15
-        break;
+//     case "microcentro":
+//         prestamo = 0.15
+//         break;
 
-    default:
-        alert("Su propiedad no aplica para otorgarle un prestamo")
-        break;
-}
+//     default:
+//         alert("Su propiedad no aplica para otorgarle un prestamo")
+//         break;
+// }
 // alert("Usted puede acceder a un prestamo de U$S" + valor * prestamo + " y el valor de sus cuotas sera de u$d" + valor * prestamo * (Math.round(Math.pow(1.01, cuotas))))
 
-let prestamoPer = document.getElementById("prestamoPer")
-prestamoPer.innerHTML = "<h3>Acerca de su prestamo personalizado</h3><p>Gracias a su inmueble ubicado en " + localidad +", usted puede acceder a un prestamo de U$S" + valor * prestamo + " y el valor de sus cuotas sera de u$d " + (valor/cuotas)
+// let prestamoPer = document.getElementById("prestamoPer")
+// prestamoPer.innerHTML = "<h3>Acerca de su prestamo personalizado</h3><p>Gracias a su inmueble ubicado en " + localidad +", usted puede acceder a un prestamo de U$S" + valor * prestamo + " y el valor de sus cuotas sera de u$d " + (valor/cuotas)
 // class Barrios 
 //     constructor(ubicacion, porcentaje){
 //         this.ubicacion = ubicacion;
@@ -231,3 +231,17 @@ Toastify({
 }).showToast()
 
 })
+
+//LUXON
+//se puede usar para hacer un calendario con los pagos de los prestamos (con el duration y el intervalo)
+
+const DateTime = luxon.DateTime
+
+const ahora = DateTime.now()
+
+console.log(ahora.toLocaleString(DateTime.DATETIME_SHORT));
+
+const agregar = ahora.plus({hours: 10, minutes: 20})
+
+console.log(agregar.toLocaleString(DateTime.DATETIME_SHORT));
+
