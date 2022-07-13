@@ -245,3 +245,4 @@ const agregar = ahora.plus({hours: 10, minutes: 20})
 
 console.log(agregar.toLocaleString(DateTime.DATETIME_SHORT));
 
+//averiguar de la libreria YUP
