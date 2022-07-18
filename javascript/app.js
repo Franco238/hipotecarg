@@ -182,23 +182,23 @@ formulario.addEventListener("submit", (event) => {
 })
 
 //Tarjeta por cada barrio que otorgan prestamos (DOM)
-const divBarrios = document.querySelector("#barriosAceptados")
+// const divBarrios = document.querySelector("#barriosAceptados")
 
 
-barriosPrestamos.forEach((barrioJS) => {
-const div = document.createElement('div')
-div.classList.add('estiloBarrios')
-div.innerHTML = 
-                    `
-                    <h2>"Barrios en los que trabajamos"</h2>
-                    <h3>${barrioJS.NOMBRE}</h3>
-                    <p>${barrioJS.descr}</p>
-                    ${ barrioJS.comision === false ? '<p>Sin comision inmobilaria!</p>' : "" } 
-                    `
+// barriosPrestamos.forEach((barrioJS) => {
+// const div = document.createElement('div')
+// div.classList.add('estiloBarrios')
+// div.innerHTML = 
+//                     `
+//                     <h2>"Barrios en los que trabajamos"</h2>
+//                     <h3>${barrioJS.NOMBRE}</h3>
+//                     <p>${barrioJS.descr}</p>
+//                     ${ barrioJS.comision === false ? '<p>Sin comision inmobilaria!</p>' : "" } 
+//                     `
 
 
-divBarrios.append(div)
-})
+// divBarrios.append(div)
+// })
 
 
 //JSON
@@ -246,3 +246,34 @@ const agregar = ahora.plus({hours: 10, minutes: 20})
 console.log(agregar.toLocaleString(DateTime.DATETIME_SHORT));
 
 //averiguar de la libreria YUP
+
+//FETCH
+
+let barriosFetch = []
+
+const listado = document.querySelector("#listado")
+
+fetch('./barrios.json')
+    .then( (resp) => resp.json() )
+    .then( (info) => {
+        barriosFetch = info
+        barriosFetch.forEach((barrioJS) => {
+            const div = document.createElement('div')
+            div.classList.add('estiloBarrios')
+            div.innerHTML = 
+                                `
+                                <h2>"Barrios en los que trabajamos"</h2>
+                                <h3>${barrioJS.NOMBRE}</h3>
+                                <p>${barrioJS.descr}</p>
+                                ${ barrioJS.comision === false ? '<p>Sin comision inmobilaria!</p>' : "" } 
+                                `
+            
+            
+            divBarrios.append(div)
+            })  
+        } )
+
+
+    // .catch( (error) => {
+    //     console.log(error)
+    // })
