@@ -122,7 +122,10 @@ console.log(buscar)
 /* dom */
 
 let info = document.getElementById("infoHipotecarg")
-info.innerHTML = "<h3>Quienes somos</h3><p>Somos una empresa encargada de unir inversores que busquen una buena rentabilidad en USD con clientes que busquen financiamiento para cualquier proyecto con las tasas mas bajas del mercado.</p>" 
+info.innerHTML = `
+                <h3>Quienes somos</h3>
+                <p>Somos una empresa encargada de unir inversores que busquen una buena rentabilidad en USD con clientes que busquen financiamiento para cualquier proyecto con las tasas mas bajas del mercado.</p>
+                ` 
 
 let mision = document.getElementById("misionHipotecarg")
 mision.innerHTML = "<h3>Mision</h3><p>Nuestro objetivo principal es ser una organizacion que colabora con los sueños de las parejas jovenes, sus primeras viviendas, remodelar o expandir la suya, invertir en su negocio y cualquiera con un gran Proyecto.</p>"
@@ -262,14 +265,14 @@ fetch('./barrios.json')
             div.classList.add('estiloBarrios')
             div.innerHTML = 
                                 `
-                                <h2>"Barrios en los que trabajamos"</h2>
-                                <h3>${barrioJS.NOMBRE}</h3>
+                                <h3>${barrioJS.nombre}</h3>
                                 <p>${barrioJS.descr}</p>
-                                ${ barrioJS.comision === false ? '<p>Sin comision inmobilaria!</p>' : "" } 
+                                <img src=${barrioJS.img} alt="">
+                                ${ barrioJS.comision === false ? '<p>Sin comision inmobilaria!</p>' : '' } 
                                 `
             
             
-            divBarrios.append(div)
+            listado.append(div)
             })  
         } )
 
