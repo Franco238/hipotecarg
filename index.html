@@ -84,41 +84,31 @@
 
     <div class="forMap row">
       
-      <form id="my-form" class="col-6 formulario">
-        <h3>Formulario de contacto</h3>
-      <h5>Realiza tu cotizacion sin costo!</h5>
-      <input class="form-control campoFormulario" type="text" id="campoNombre" placeholder="Ingrese su nombre">
-      <input class="form-control campoFormulario" type="text" id="campoLocalidad" placeholder="Ingrese su localidad">
-      <input class="form-control campoFormulario" type="email" id="campoEmail" placeholder="Ingrese su E-mail">
-      <input class="form-control campoFormulario" type="number" id="campoNumero" placeholder="Ingrese su Whatsapp">
-
-      <button id="botonEnviar" type="submit" class="btn btn-primary botonEnviar">Enviar</button>
-
-    </form>
     <iframe class="col-5 mapa" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3284.125080842561!2d-58.40618798505152!3d-34.600998480460134!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bcca925bb04107%3A0x20d6da597b25d3aa!2sViamonte%202660%2C%20C1056%20ABR%2C%20Buenos%20Aires!5e0!3m2!1ses!2sar!4v1656604316297!5m2!1ses!2sar" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-    </div>
     
-      <!-- <div>
+    
+      <div class="col-7">
         <h3>Simula tu hipoteca online!</h3>
-        <form id="my-form">
+        <form id="my-form" class=" formulario">
       <input class="form-control campoFormulario" type="text" id="campoNombre" placeholder="Ingrese su nombre">
       <input class="form-control campoFormulario" type="email" id="campoEmail" placeholder="Ingrese su E-mail">
       <input class="form-control campoFormulario" type="number" id="campoNumero" placeholder="Ingrese su Whatsapp">
-      <input class="form-control campoFormulario" type="number" id="campoValor" placeholder="Ingrese el valor de su propiedad">
+      <input class="form-control campoFormulario" type="number" id="campoValor" placeholder="Ingrese el valor de su propiedad en USD">
       <input class="form-control campoFormulario" type="number" id="campoCuotas" placeholder="Ingrese en cuantas cuotas desea abonar">
 
-      <select class="campoFormulario selector" aria-label="Default select example">
+      <select id="campoLocalidad" class="campoFormulario selector" aria-label="Default select example">
         <option selected>Seleccione su localidad</option>
         <option value="palermo">Palermo</option>
         <option value="belgrano">Belgrano</option>
-        <option value="belgrano">Nuñez</option>
-        <option value="belgrano">Recoleta</option>
-        <option value="belgrano">Microcentro</option>
+        <option value="Nulez">Nuñez</option>
+        <option value="Recoleta">Recoleta</option>
       </select>
 
       <button id="botonEnviar" type="submit" class="btn btn-primary botonEnviar">Enviar</button>
         </form>
-      </div> -->
+      </div>
+    </div>
+      <section id="simulador"></section>
 
       <main id="barriosAceptados">
         
@@ -140,7 +130,7 @@
       <section class="col-8">
         <p>Suscribite a nuestro newsletter para enterarte de nuestras ultimas novedades!</p>
         <form>
-          <label for="email"></label>
+          <!-- <label for="email"></label> -->
           <input type="email" placeholder="Ingrese su E-mail" name="mail">
           <input id="botonNews" class="botonFooter" type="submit" value="Suscribirse">
         </form>
@@ -158,7 +148,6 @@
     <script src="js/bootstrap.min.js"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
-    <script src="javascript/luxon.js"></script>
     <script src="javascript/barrios.js"></script>
     <script src="javascript/app.js"></script>
   </body>
