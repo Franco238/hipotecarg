@@ -64,7 +64,7 @@ footer p{
 }
 
 .somosMision{
-    margin: 30px;
+    margin: 50px;
 }
 
 .subDom{
@@ -155,5 +155,11 @@ footer p{
 
 
 .fotoDom{
-    width: 80%
+    width: 80%;
+    height: 30rem;
+    margin-bottom: 40px;
+}
+
+.tituloBarrios{
+    margin-top: 60px;
 }

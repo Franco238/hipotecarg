@@ -145,7 +145,8 @@ formHipoteca.addEventListener('submit', (e) => {
 //Toastify
 const btnToastify = document.querySelector("#botonNews");
 
-btnToastify.addEventListener('submit', () => {
+btnToastify.addEventListener("click", (e) => {
+    e.preventDefault();
     Toastify({
         text: "Se ha suscripto de forma exitosa!",
         duration: 4000,
