@@ -26,12 +26,14 @@ let info = document.getElementById("infoHipotecarg")
 info.innerHTML = `
                 <h3>Quienes somos</h3>
                 <p>Somos una empresa encargada de unir inversores que busquen una buena rentabilidad en USD con clientes que busquen financiamiento para cualquier proyecto con las tasas mas bajas del mercado.</p>
-                <img src="https://img.caminofinancial.com/wp-content/uploads/2019/01/18022543/Mortgage1-1024x683.jpg" alt="hipoteca">
+                <img class="fotoDom" src="https://www.economiasimple.net/wp-content/uploads/2018/11/prestamo-hipotecario.jpg" alt="hipoteca">
                 `
 
 let mision = document.getElementById("misionHipotecarg")
-mision.innerHTML = "<h3>Mision</h3><p>Nuestro objetivo principal es ser una organizacion que colabora con los sueños de las parejas jovenes, sus primeras viviendas, remodelar o expandir la suya, invertir en su negocio y cualquiera con un gran Proyecto.</p>"
-
+mision.innerHTML = `<h3>Mision</h3>
+                    <p>Nuestro objetivo principal es ser una organizacion que colabora con los sueños de las parejas jovenes, sus primeras viviendas, remodelar o expandir la suya, invertir en su negocio y cualquiera con un gran Proyecto.</p>"
+                    <img class="fotoDom" src="https://epicainmobiliaria.com/wp-content/uploads/2021/08/firmando-levantamiento-de-hipoteca.jpg" alt ="hipoteca2">
+                    `
 
 //Events
 
@@ -133,8 +135,8 @@ formHipoteca.addEventListener('submit', (e) => {
 
     let simulador = document.querySelector("#simulador")
     simulador.innerHTML = `
-        <h3>"Muchas gracias ${campoNombre.value} por simular tu hipoteca con Hipotecarg!"</h3>
-        <p>"El valor del prestamo que podemos otorgarte es de U$D"${campoValor.value / 4} " y el valor de cada cuota es de U$D" ${campoValor.value / 4 / campoCuotas.value * 1, 02}</p>
+        <h3>Muchas gracias ${campoNombre.value} por simular tu hipoteca con Hipotecarg!</h3>
+        <p>El valor del prestamo que podemos otorgarte es de U$D${campoValor.value / 4}  y el valor de cada cuota es de U$D ${(campoValor.value / 4 / campoCuotas.value) * 1.03 }</p>
     `;
 });
 
@@ -143,13 +145,12 @@ formHipoteca.addEventListener('submit', (e) => {
 //Toastify
 const btnToastify = document.querySelector("#botonNews");
 
-btnToastify.addEventListener("click", () => {
-
+btnToastify.addEventListener('submit', () => {
     Toastify({
         text: "Se ha suscripto de forma exitosa!",
         duration: 4000,
         className: 'botonToast'
-    })
+    })  
         .showToast()
 
 })
