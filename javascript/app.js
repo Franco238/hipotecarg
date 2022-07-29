@@ -44,31 +44,6 @@ const campoValor = document.querySelector("#campoValor")
 const campoCuotas = document.querySelector("#campoCuotas")
 
 
-//  let arrayDatos = []
-// let simulador = document.querySelector("#simulador")
-//  const simuladorHipo = () => {
-//     if (campoNombre == "" || campoLocalidad == "" || campoEmail == "" || campoNumero == "" || campoValor == "" || campoCuotas == "") {
-//         swal ({
-//             text: "Faltan datos",
-//             icon: "error"
-//         })
-
-//     }
-//     else{
-//         arrayDatos.push(campoCuotas, campoEmail, campoLocalidad, campoNombre, campoNumero, campoValor)
-//         console.log(campoCuotas.value, campoEmail.value, campoLocalidad.value, campoNombre.value, campoNumero.value, campoValor.value)
-//         console.log(localStorage)
-//         campoCuotas.value = ""
-//         campoEmail.value = ""
-//         campoLocalidad.value = ""
-//         campoNombre.value = ""
-//         campoNumero.value = ""
-//         campoValor.value = ""
-//         setTimeout(() => {
-//             simulador.innerHTML = `Gracias`
-//         })
-//     }
-//  }
 
 
 campoNombre.addEventListener("input", () => {
@@ -141,7 +116,6 @@ formulario.addEventListener("submit", (event) => {
 
 
 })
-//Esto estaba arriba del console log anterior
 
 
 
@@ -180,20 +154,6 @@ btnToastify.addEventListener("click", () => {
 
 })
 
-//LUXON
-//se puede usar para hacer un calendario con los pagos de los prestamos (con el duration y el intervalo)
-
-// const DateTime = luxon.DateTime
-
-// const ahora = DateTime.now()
-
-// console.log(ahora.toLocaleString(DateTime.DATETIME_SHORT));
-
-// const agregar = ahora.plus({hours: 10, minutes: 20})
-
-// console.log(agregar.toLocaleString(DateTime.DATETIME_SHORT));
-
-//averiguar de la libreria YUP
 
 //FETCH
 
