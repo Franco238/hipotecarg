@@ -1,15 +1,15 @@
 class Clientes {
-    constructor(nombre, edad, nacionalidad) {
+    constructor(nombre, whatsapp, email) {
         this.nombre = nombre
-        this.edad = edad
-        this.nacionalidad = nacionalidad
+        this.edad = whatsapp
+        this.nacionalidad = email
     }
 }
 
 const cliente = [
-    new Clientes("Carlos Perez", 40, "español"),
-    new Clientes("Mariela Thompson", 52, "venezolana"),
-    new Clientes("Miguel Losa", 18, "uruguayo")
+    new Clientes("Carlos Perez", 190294830, "cperez@gmail.com"),
+    new Clientes("Mariela Thompson", 10203303, "mthompson@gmail.com"),
+    new Clientes("Miguel Losa", 10349202, "mlosa@gmail.com")
 ]
 
 
