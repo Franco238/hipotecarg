@@ -107,24 +107,42 @@
 
     <div class="col-7">
       <h3>Simula tu hipoteca online!</h3>
-      <form id="my-form" class=" formulario">
-        <input class="form-control campoFormulario" type="text" id="campoNombre" placeholder="Ingrese su nombre">
-        <input class="form-control campoFormulario" type="email" id="campoEmail" placeholder="Ingrese su E-mail">
-        <input class="form-control campoFormulario" type="number" id="campoNumero" placeholder="Ingrese su Whatsapp">
-        <input class="form-control campoFormulario" type="number" id="campoValor"
-          placeholder="Ingrese el valor de su propiedad en USD">
-        <input class="form-control campoFormulario" type="number" id="campoCuotas"
-          placeholder="Ingrese en cuantas cuotas desea abonar">
+      <form id="my-form" class="formulario">
+        <div class="form-group">
+          <label for="campoNombre">Nombre</label>
+          <input class="form-control campoFormulario" type="text" id="campoNombre" placeholder="Ingrese su nombre"
+            minlength="">
+        </div>
+        <div class="form-group">
+          <label for="campoEmail">Email</label>
+          <input class="form-control campoFormulario" type="email" id="campoEmail" placeholder="Ingrese su E-mail">
+        </div>
+        <div class="form-group">
+          <label for="campoNumero">Número de teléfono</label>
+          <input class="form-control campoFormulario" type="number" id="campoNumero" placeholder="Ingrese su Whatsapp">
+        </div>
+        <div class="form-group">
+          <label for="campoValor">Valor de la propiedad</label>
+          <input class="form-control campoFormulario" type="number" id="campoValor"
+            placeholder="Ingrese el valor de su propiedad en USD">
+        </div>
+        <div class="form-group">
+          <label for="campoCuotas">Número de cuotas</label>
+          <input class="form-control campoFormulario" type="number" id="campoCuotas"
+            placeholder="Ingrese en cuantas cuotas desea abonar">
+        </div>
 
-        <select id="campoLocalidad" class="campoFormulario selector" aria-label="Default select example">
-          <option selected>Seleccione su localidad</option>
-          <option value="palermo">Palermo</option>
-          <option value="belgrano">Belgrano</option>
-          <option value="Nulez">Nuñez</option>
-          <option value="Recoleta">Recoleta</option>
-        </select>
+        <div class="form-group">
+          <label for="campoLocalidad">Localidad</label>
+          <select id="campoLocalidad" class="campoFormulario selector" aria-label="Default select example">
+            <option selected>Seleccione su localidad</option>
+          </select>
+        </div>
 
-        <button id="botonEnviar" type="submit" class="btn btn-primary botonEnviar">Enviar</button>
+        <div class="form-group">
+          <button id="botonEnviar" type="submit" class="btn btn-primary botonEnviar">Enviar</button>
+        </div>
+
       </form>
     </div>
   </div>
@@ -161,6 +179,15 @@
     </section>
   </footer>
 
+  <div class="my-modal" id="modal-hipotecas">
+    <div class="my-modal-dialog">
+      <button type="button" class="my-modal-close-btn" onclick="closeMyModal()">&times;</button>
+      <h3 class="my-modal-title">
+        Lista de hipotecas
+      </h3>
+      <div id="hipotecas"></div>
+    </div>
+  </div>
 
 
   <!-- bootstrap -->

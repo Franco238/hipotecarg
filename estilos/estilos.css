@@ -81,18 +81,27 @@ footer p{
     margin: 30px;
 }
 
-.formulario{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+.formulario {
+    text-align: left;
 }
 
+.formulario label {
+    display: block;
+}
+
+.formulario .error {
+    color: rgb(175, 27, 27);
+    font-style: italic;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
 
 .campoFormulario{
     width: 70%;
     margin: auto;
-    margin-top: 20px;
+    /* margin-top: 20px; */
     background-color: rgb(61, 151, 224);
     border: 2px solid black;   
 }
@@ -122,6 +131,65 @@ footer p{
     color: white;
 }
 
+/*MODAL*/
+.hipoteca {
+    padding: 15px 0;
+    text-align: left;
+}
+
+.hipoteca:not(:last-child) {
+    border-bottom: 1px solid rgb(199, 199, 199);
+}
+
+.my-modal {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, .5);
+}
+
+.my-modal.show {
+    display: flex;
+}
+
+.my-modal-dialog {
+    background-color: #fff;
+    border-radius: 15px;
+    padding: 10px;
+    text-align: left;
+    position: relative;
+    width: 100%;
+    max-width: 60%;
+}
+
+.my-modal-title {
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.4rem;
+    padding-bottom: 10px;
+}
+
+.my-modal-close-btn {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    line-height: 40px;
+    border: 1px solid rgb(201, 31, 31);
+    color: rgb(201, 31, 31);
+    border-radius: 50%;
+    height: 40px;
+    width: 40px;
+    font-size: 25px;
+    position: absolute;
+    top: -20px;
+    right: -20px;
+    cursor: pointer;
+}
 
 #listado{
     /* max-width: 1200px; */

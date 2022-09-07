@@ -1,26 +1,61 @@
-class Clientes {
-    constructor(nombre, whatsapp, email) {
-        this.nombre = nombre
-        this.edad = whatsapp
-        this.nacionalidad = email
-    }
+const calcularHipoteca = (valorDeLaPropiedad, numeroDeCuotas) => {
+    /**
+     * TODO: Averiguar que representan esos números
+     */
+    const NUMERO_MAGICO = 4;
+    const OTRO_NUMERO_MAGICO = 1.03;
+
+    const valorDelPrestamo = valorDeLaPropiedad / NUMERO_MAGICO;
+
+    const valorDeCuota = (valorDelPrestamo / numeroDeCuotas) * OTRO_NUMERO_MAGICO;
+
+    return {
+        valorDelPrestamo,
+        valorDeCuota,
+    };
 }
 
-const cliente = [
-    new Clientes("Carlos Perez", 190294830, "cperez@gmail.com"),
-    new Clientes("Mariela Thompson", 10203303, "mthompson@gmail.com"),
-    new Clientes("Miguel Losa", 10349202, "mlosa@gmail.com")
-]
+/**
+ * Cargar localiades en el select del formulario
+ */
+let localidades = [];
+
+(async () => {
+    const localidadesSelect = document.getElementById('campoLocalidad');
+
+    const result = await fetch('../barrios.json');
+    localidades = await result.json();
+
+    const options = localidades.map(localidad => {
+        const option = document.createElement('option');
+        option.value = localidad.id;
+        option.textContent = localidad.nombre;
+
+        return option;
+    });
+
+    localidadesSelect.append(...options);
+
+    renderizasBarrios(localidades);
+})();
+
+const listado = document.querySelector("#listado")
+
+const renderizasBarrios = (barrios) => {
+    barrios.forEach((barrio) => {
+        const div = document.createElement('div')
+        div.classList.add('estiloBarrios')
+        div.innerHTML = `
+            <h3>${barrio.nombre}</h3>
+            <p>${barrio.descr}</p>
+            <img src=${barrio.img} alt="">
+            ${barrio.comision === false ? '<p>Sin comision inmobilaria!</p>' : ''}
+        `;
 
 
-const filtro = cliente.filter((el) => el.edad < 30)
-
-console.log(filtro)
-
-const buscar = cliente.find((nac) => nac.nacionalidad === "español")
-
-console.log(buscar)
-
+        listado.append(div)
+    })
+}
 
 let info = document.getElementById("infoHipotecarg")
 info.innerHTML = `
@@ -44,88 +79,121 @@ const campoEmail = document.querySelector("#campoEmail")
 const campoNumero = document.querySelector("#campoNumero")
 const campoValor = document.querySelector("#campoValor")
 const campoCuotas = document.querySelector("#campoCuotas")
+const errores = new Map();
+let formularioEstaSucio = false;
 
+const mostrarError = (elementoInput, mensajeDeError) => {
+    const error = document.createElement('small');
+    error.textContent = mensajeDeError;
+    error.classList.add('error');
 
+    elementoInput.classList.add("border-danger")
+    elementoInput.classList.remove("border-success")
 
-
-campoNombre.addEventListener("input", () => {
-    console.log(campoNombre.value)
-    if (campoNombre.value.length < 3) {
-        campoNombre.classList.add("border-danger")
-        campoNombre.classList.remove("border-success")
-
+    if (elementoInput.nextElementSibling) {
+        elementoInput.nextElementSibling.remove();
     }
-    else {
-        campoNombre.classList.remove("border-danger")
-        campoNombre.classList.add("border-success")
-    }
-})
+    elementoInput.after(error)
+    errores.set(elementoInput.id, mensajeDeError);
+}
 
-campoLocalidad.addEventListener("input", () => {
-    conole.log(campoLocalidad.value)
-    if (campoLocalidad.value.length < 5) {
-        campoLocalidad.classList.add("border-danger")
-        campoLocalidad.classList.remove("border-success")
-    }
-    else {
-        campoLocalidad.classList.remove("border-danger")
-        campoLocalidad.classList.add("border-success")
+const quitarError = (elementoInput) => {
+    elementoInput.classList.remove("border-danger")
+    elementoInput.classList.add("border-success")
+
+    if (elementoInput.nextElementSibling) {
+        elementoInput.nextElementSibling.remove();
     }
 
-})
+    errores.delete(elementoInput.id);
+}
 
-campoEmail.addEventListener("input", () => {
-    console.log(campoEmail.value)
+const validar = (esValido, mensajeDeError) => (e) => {
+    const input = e.target;
 
-    if (campoEmail.value.length < 10) {
-        +        campoLocalidad.classList.add("border-danger")
-        campoLocalidad.classList.remove("border-success")
-    }
-    else {
-        campoLocalidad.classList.remove("border-danger")
-        campoLocalidad.classList.add("border-success")
+    formularioEstaSucio = true;
+
+    if (esValido(input.value)) {
+        return quitarError(input);
     }
 
-})
+    mostrarError(input, mensajeDeError);
+}
 
-campoNumero.addEventListener("input", () => {
-    console.log(campoNumero.value)
-    if (campoEmail.value.length < 10) {
-        campoLocalidad.classList.add("border-danger")
-        campoLocalidad.classList.remove("border-success")
-    }
-    else {
-        campoLocalidad.classList.remove("border-danger")
-        campoLocalidad.classList.add("border-success")
-    }
+campoNombre.addEventListener(
+    "input",
+    validar((valor) => valor.length >= 3, 'El nombre debe tener al menos 3 caracteres')
+)
 
-})
+const EMAIL_REGEX = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+
+campoEmail.addEventListener(
+    "input",
+    validar((valor) => EMAIL_REGEX.test(valor), 'Debe ingresar un formato de email válido')
+)
+
+campoNumero.addEventListener(
+    "input",
+    validar((valor) => valor.length > 12, 'El número de teléfono debe tener al menos 12 caracteres')
+)
+
+campoCuotas.addEventListener(
+    "input",
+    validar((valor) => Number(valor) >= 1 && Number.isInteger(+valor), 'El número de cuotas debe ser un número entero mayor a cero')
+)
+
+campoValor.addEventListener(
+    "input",
+    validar((valor) => Number(valor) >= 1, 'El valor de la propiedad debe ser un número mayor a cero')
+)
+
+campoLocalidad.addEventListener(
+    "change",
+    validar((valor) => !!localidades.find(localidad => localidad.id == valor), 'La localidad debe tener al menos 5 caracteres')
+)
+
+//Arreglo de objeto 
+const hipotecas = [];
 
 formulario.addEventListener("submit", (event) => {
-    event.preventDefault
+    event.preventDefault();
 
-    console.log("Informacion formulario")
+    const hayErrores = errores.size > 0;
+
+    if (!formularioEstaSucio && !hayErrores) {
+        Swal.fire({
+            icon: 'error',
+            title: 'Error!',
+            text: 'Debe llenar los campos',
+        });
+
+        return;
+    }
+
+    if (hayErrores) {
+        Swal.fire({
+            icon: 'error',
+            title: 'Error!',
+            text: 'Debe corregir los errores en los camos indicados',
+        });
+
+        return;
+    }
+
+    const { valorDelPrestamo, valorDeCuota } = calcularHipoteca(campoValor.value, campoCuotas.value);
+
     const infoUsuario = {
         nombre: campoNombre.value,
         localidad: campoLocalidad.value,
         email: campoEmail.value,
         whatsapp: campoNumero.value,
         valor: campoValor.value,
-        cuotas: campoCuotas.value
+        cuotas: campoCuotas.value,
+        valorDelPrestamo,
+        valorDeCuota,
     }
 
-    console.log(infoUsuario)
-
-
-})
-
-
-
-//Sweet Alert
-const formHipoteca = document.querySelector('#my-form');
-
-formHipoteca.addEventListener('submit', (e) => {
-    e.preventDefault();
+    hipotecas.push(infoUsuario);
 
     Swal.fire({
         icon: 'success',
@@ -134,13 +202,67 @@ formHipoteca.addEventListener('submit', (e) => {
     });
 
     let simulador = document.querySelector("#simulador")
+
     simulador.innerHTML = `
         <h3>Muchas gracias ${campoNombre.value} por simular tu hipoteca con Hipotecarg!</h3>
-        <p>El valor del prestamo que podemos otorgarte es de U$D${campoValor.value / 4}  y el valor de cada cuota es de U$D ${(campoValor.value / 4 / campoCuotas.value) * 1.03 }</p>
+        <p>El valor del prestamo que podemos otorgarte es de U$D${valorDelPrestamo}  y el valor de cada cuota es de U$D ${valorDeCuota}</p>
+        <button class="btn btn-primary" onclick="showModal()">Lista de Calculos de Hipotecas</button>
     `;
-});
+
+    renderizasHipotecas(hipotecas);
+
+    formulario.reset();
+    formularioEstaSucio = false;
+})
+
+const hipotecasContainerDiv = document.getElementById('hipotecas');
+
+const renderizasHipotecas = (hipotecas) => {
+    hipotecasContainerDiv.innerHTML = '';
+
+    hipotecas.forEach((hipoteca) => {
+        const hipotecaDiv = document.createElement('div');
+
+        hipotecaDiv.classList.add('hipoteca');
 
 
+        hipotecaDiv.innerHTML = `
+            <div class="row">
+                <div class="col-md-6">Cliente: ${hipoteca.nombre}</div>
+                <div class="col-md-6">Email: ${hipoteca.email}</div>
+                <div class="col-md-6">Teléfono: ${hipoteca.whatsapp}</div>
+                <div class="col-md-6">Valor de la propiedad: ${hipoteca.valor} USD</div>
+                <div class="col-md-6">Número de cuotas: ${hipoteca.cuotas}</div>
+                <div class="col-md-6">Localidad: ${localidades.find(localidad => localidad.id == hipoteca.localidad)?.nombre}</div>
+            </div>
+            <div class="row">
+                <div class="col-md-6"><b>Monto del préstamo</b>: ${hipoteca.valorDelPrestamo} USD</div>
+                <div class="col-md-6"><b>Monto de las cuotas</b>: ${hipoteca.valorDeCuota} USD</div>
+            </div>
+        `;
+
+        hipotecasContainerDiv.appendChild(hipotecaDiv);
+    });
+}
+
+const btnCloseModal = document.querySelector('.my-modal-close-btn');
+const modal = document.getElementById('modal-hipotecas');
+
+const closeModal = () => {
+    modal.classList.remove('show');
+}
+
+const showModal = () => {
+    modal.classList.add('show')
+}
+
+btnCloseModal.addEventListener('click', closeModal);
+
+modal.addEventListener('click', (e) => {
+    if (e.target.matches('.my-modal')) {
+        closeModal();
+    }
+})
 
 //Toastify
 const btnToastify = document.querySelector("#botonNews");
@@ -151,38 +273,7 @@ btnToastify.addEventListener("click", (e) => {
         text: "Se ha suscripto de forma exitosa!",
         duration: 4000,
         className: 'botonToast'
-    })  
+    })
         .showToast()
 
 })
-
-
-//FETCH
-
-let barriosFetch = []
-
-const listado = document.querySelector("#listado")
-
-fetch('./barrios.json')
-    .then((resp) => resp.json())
-    .then((info) => {
-        barriosFetch = info
-        barriosFetch.forEach((barrioJS) => {
-            const div = document.createElement('div')
-            div.classList.add('estiloBarrios')
-            div.innerHTML = `
-                <h3>${barrioJS.nombre}</h3>
-                <p>${barrioJS.descr}</p>
-                <img src=${barrioJS.img} alt="">
-                ${barrioJS.comision === false ? '<p>Sin comision inmobilaria!</p>' : ''} 
-            `;
-
-
-            listado.append(div)
-        })
-    })
-
-
-    .catch((error) => {
-        console.log(error)
-    })
