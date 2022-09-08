@@ -1,13 +1,7 @@
 const calcularHipoteca = (valorDeLaPropiedad, numeroDeCuotas) => {
-    /**
-     * TODO: Averiguar que representan esos números
-     */
-    const NUMERO_MAGICO = 4;
-    const OTRO_NUMERO_MAGICO = 1.03;
+    const valorDelPrestamo = valorDeLaPropiedad / 4;
 
-    const valorDelPrestamo = valorDeLaPropiedad / NUMERO_MAGICO;
-
-    const valorDeCuota = (valorDelPrestamo / numeroDeCuotas) * OTRO_NUMERO_MAGICO;
+    const valorDeCuota = (valorDelPrestamo / numeroDeCuotas) * 1.03;
 
     return {
         valorDelPrestamo,
@@ -80,7 +74,6 @@ const campoNumero = document.querySelector("#campoNumero")
 const campoValor = document.querySelector("#campoValor")
 const campoCuotas = document.querySelector("#campoCuotas")
 const errores = new Map();
-let formularioEstaSucio = false;
 
 const mostrarError = (elementoInput, mensajeDeError) => {
     const error = document.createElement('small');
@@ -94,7 +87,7 @@ const mostrarError = (elementoInput, mensajeDeError) => {
         elementoInput.nextElementSibling.remove();
     }
     elementoInput.after(error)
-    errores.set(elementoInput.id, mensajeDeError);
+    errores.set(elementoInput.name, mensajeDeError);
 }
 
 const quitarError = (elementoInput) => {
@@ -105,13 +98,11 @@ const quitarError = (elementoInput) => {
         elementoInput.nextElementSibling.remove();
     }
 
-    errores.delete(elementoInput.id);
+    errores.delete(elementoInput.name);
 }
 
 const validar = (esValido, mensajeDeError) => (e) => {
     const input = e.target;
-
-    formularioEstaSucio = true;
 
     if (esValido(input.value)) {
         return quitarError(input);
@@ -152,23 +143,23 @@ campoLocalidad.addEventListener(
     validar((valor) => !!localidades.find(localidad => localidad.id == valor), 'La localidad debe tener al menos 5 caracteres')
 )
 
-//Arreglo de objeto 
 const hipotecas = [];
 
 formulario.addEventListener("submit", (event) => {
     event.preventDefault();
 
+    const formElements = [...event.target];
+
+    const inputElements = formElements.filter(el => el.tagName === 'INPUT');
+
+    const selectElements = formElements.filter(el => el.tagName === 'SELECT');
+
+    // Disparar evento input/change para correr validaciones
+    inputElements.forEach(input => input.dispatchEvent(new Event('input', { bubbles: true })));
+
+    selectElements.forEach(input => input.dispatchEvent(new Event('change', { bubbles: true })));
+
     const hayErrores = errores.size > 0;
-
-    if (!formularioEstaSucio && !hayErrores) {
-        Swal.fire({
-            icon: 'error',
-            title: 'Error!',
-            text: 'Debe llenar los campos',
-        });
-
-        return;
-    }
 
     if (hayErrores) {
         Swal.fire({
@@ -195,24 +186,23 @@ formulario.addEventListener("submit", (event) => {
 
     hipotecas.push(infoUsuario);
 
+    const simulador = document.querySelector("#simulador")
+
+    simulador.innerHTML = `
+        <h3>Muchas gracias ${campoNombre.value} por simular tu hipoteca con Hipotecarg!</h3>
+        <p>El valor del prestamo que podemos otorgarte es de U$D${valorDelPrestamo}  y el valor de cada cuota es de U$D ${valorDeCuota}</p>
+        <button class="btn btn-primary" onclick="mostrarModal()">Lista de Calculos de Hipotecas</button>
+    `;
+
+    renderizasHipotecas(hipotecas);
+
     Swal.fire({
         icon: 'success',
         title: 'Muchas gracias!',
         text: 'Su formulario ha sido enviado',
     });
 
-    let simulador = document.querySelector("#simulador")
-
-    simulador.innerHTML = `
-        <h3>Muchas gracias ${campoNombre.value} por simular tu hipoteca con Hipotecarg!</h3>
-        <p>El valor del prestamo que podemos otorgarte es de U$D${valorDelPrestamo}  y el valor de cada cuota es de U$D ${valorDeCuota}</p>
-        <button class="btn btn-primary" onclick="showModal()">Lista de Calculos de Hipotecas</button>
-    `;
-
-    renderizasHipotecas(hipotecas);
-
     formulario.reset();
-    formularioEstaSucio = false;
 })
 
 const hipotecasContainerDiv = document.getElementById('hipotecas');
@@ -248,19 +238,19 @@ const renderizasHipotecas = (hipotecas) => {
 const btnCloseModal = document.querySelector('.my-modal-close-btn');
 const modal = document.getElementById('modal-hipotecas');
 
-const closeModal = () => {
+const cerrarModal = () => {
     modal.classList.remove('show');
 }
 
-const showModal = () => {
+const mostrarModal = () => {
     modal.classList.add('show')
 }
 
-btnCloseModal.addEventListener('click', closeModal);
+btnCloseModal.addEventListener('click', cerrarModal);
 
 modal.addEventListener('click', (e) => {
     if (e.target.matches('.my-modal')) {
-        closeModal();
+        cerrarModal();
     }
 })
 

@@ -110,31 +110,34 @@
       <form id="my-form" class="formulario">
         <div class="form-group">
           <label for="campoNombre">Nombre</label>
-          <input class="form-control campoFormulario" type="text" id="campoNombre" placeholder="Ingrese su nombre"
-            minlength="">
+          <input class="form-control campoFormulario" type="text" id="campoNombre" name="nombre"
+            placeholder="Ingrese su nombre" minlength="">
         </div>
         <div class="form-group">
           <label for="campoEmail">Email</label>
-          <input class="form-control campoFormulario" type="email" id="campoEmail" placeholder="Ingrese su E-mail">
+          <input class="form-control campoFormulario" type="email" id="campoEmail" name="email"
+            placeholder="Ingrese su E-mail">
         </div>
         <div class="form-group">
           <label for="campoNumero">Número de teléfono</label>
-          <input class="form-control campoFormulario" type="number" id="campoNumero" placeholder="Ingrese su Whatsapp">
+          <input class="form-control campoFormulario" type="number" id="campoNumero" name="numeroTelefono"
+            placeholder="Ingrese su Whatsapp">
         </div>
         <div class="form-group">
           <label for="campoValor">Valor de la propiedad</label>
-          <input class="form-control campoFormulario" type="number" id="campoValor"
+          <input class="form-control campoFormulario" type="number" id="campoValor" name="valorDePropiedad"
             placeholder="Ingrese el valor de su propiedad en USD">
         </div>
         <div class="form-group">
           <label for="campoCuotas">Número de cuotas</label>
-          <input class="form-control campoFormulario" type="number" id="campoCuotas"
+          <input class="form-control campoFormulario" type="number" id="campoCuotas" name="numeroDeCuotas"
             placeholder="Ingrese en cuantas cuotas desea abonar">
         </div>
 
         <div class="form-group">
           <label for="campoLocalidad">Localidad</label>
-          <select id="campoLocalidad" class="campoFormulario selector" aria-label="Default select example">
+          <select id="campoLocalidad" name="localidad" class="campoFormulario selector"
+            aria-label="Default select example">
             <option selected>Seleccione su localidad</option>
           </select>
         </div>

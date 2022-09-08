@@ -90,6 +90,7 @@ footer p{
 }
 
 .formulario .error {
+    display: block;
     color: rgb(175, 27, 27);
     font-style: italic;
 }
